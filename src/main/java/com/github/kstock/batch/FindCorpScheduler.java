@@ -15,7 +15,7 @@ public class FindCorpScheduler extends CommonComponent {
      */
     //@Scheduled(cron = "0 0 1 * * 1-5")
     @Scheduled(initialDelay = 1000, fixedDelay = 2000)
-    public void iteratorFindCorp(){
+    public void generateCorp(){
         log.info("cronJobSch");
     }
 }
