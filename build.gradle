@@ -2,12 +2,15 @@ buildscript {
     ext {
         springBootVersion = '2.3.0.RELEASE'
         lombokVersion = '1.18.12'
+        querydslVersion = '4.3.1'
     }
     repositories {
         mavenCentral()
+        maven {url "https://plugins.gradle.org/m2/"}
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.10")
     }
 }
 
@@ -25,18 +28,59 @@ repositories {
 
 dependencies {
 
+    //spring
     implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
     implementation "org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
+
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
-
-    //ocx 연동모듈
-    compile group: 'net.sf.jacob-project', name: 'jacob', version: '1.14.3'
-
 
     //lombok 설정
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
+    //jpa & querydsl
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    implementation "com.querydsl:querydsl-jpa:${querydslVersion}"
+    implementation "com.querydsl:querydsl-apt:${querydslVersion}"
+
+    //h2(개발용)
+    runtime('com.h2database:h2')
+
+    // my-sql
+    compile 'mysql:mysql-connector-java'
+
+    //ocx 연동모듈
+    compile group: 'net.sf.jacob-project', name: 'jacob', version: '1.14.3'
+
+    //tc 관련
     testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
     testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+//querydsl plugin 설정
+apply plugin: "com.ewerk.gradle.plugins.querydsl"
+
+def queryDslSrcDir = 'src/main/generated'
+
+querydsl {
+    library = "com.querydsl:querydsl-apt"
+    jpa = true
+    querydslSourcesDir = queryDslSrcDir
+}
+
+sourceSets {
+    main{
+        java{
+            srcDirs = ['src/main/java', queryDslSrcDir]
+        }
+    }
+}
+
+compileQuerydsl{
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+configurations {
+    querydsl.extendsFrom compileClasspath
 }
