@@ -1,6 +1,8 @@
 package com.github.kstock.common;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
 /**
@@ -10,4 +12,7 @@ import org.springframework.context.ApplicationContext;
 public class CommonComponent {
 
     private ApplicationContext applicationContext;
+
+    protected Logger log = LoggerFactory.getLogger(getClass());
+
 }

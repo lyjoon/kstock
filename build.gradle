@@ -11,6 +11,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.10")
+        /*classpath("org.springframework.cloud:spring-cloud-dependencies:Greenwich.RELEASE")*/
     }
 }
 
@@ -32,8 +33,14 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
     implementation "org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}"
     implementation "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
+    //spring-openfeign
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:2.2.3.RELEASE'
 
+    //test
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+
+    //poi(https://mvnrepository.com/artifact/org.apache.poi/poi)
+    implementation "org.apache.poi:poi:4.1.2"
 
     //lombok 설정
     compileOnly "org.projectlombok:lombok:${lombokVersion}"

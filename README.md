@@ -1,6 +1,14 @@
-#ERD
-- https://aquerytool.com:443/aquerymain/index/?rurl=c07f09d5-3aeb-4eb2-bc3a-0f5c806104f1
-- pwd : 36gufr
+# kstock
+[![Build Status](https://travis-ci.org/codecentric/springboot-sample-app.svg?branch=master)](https://travis-ci.org/codecentric/springboot-sample-app)
 
-#구성
-- spring.profiles.active : <strong>local</strong>
+> Minimal Spring Boot sample app.
+
+# Requirements
+
+For building and running the application you need:
+
+* JDK 1.8
+
+* Gradle 7
+
+# Copyright
