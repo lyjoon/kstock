@@ -33,8 +33,12 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
     implementation "org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}"
     implementation "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
-    //spring-openfeign
+
+    //feign(spring-openfeign)
+    //on redirect allowed
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:2.2.3.RELEASE'
+    implementation 'io.github.openfeign:feign-okhttp:11.0'
+    implementation 'io.github.openfeign:feign-httpclient:11.0'
 
     //test
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
