@@ -11,6 +11,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class KrxServiceImpl extends CommonComponent implements KrxService {
     @Override
     public Mono<List<Corp>> corpList() {
         return Mono.fromCallable(() -> {
+            //FileInputStream fis = new FileInputStream();
             HSSFWorkbook workbook = new HSSFWorkbook(krxApi.corpList().body().asInputStream());
             return workbook;
         }).map(workbook -> {
