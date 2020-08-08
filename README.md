@@ -12,3 +12,11 @@ For building and running the application you need:
 * Gradle 7
 
 # Copyright
+
+# GUIDE
+
+### JACOB 
+
+- how find get program-id? (https://www.javaquery.com/2013/12/how-to-find-clsid-or-program-id-of.html)
+
+- refer to /lib/jacob/*

@@ -20,9 +20,12 @@ public class TestJacob extends TestApp {
     @Test
     public void testJacob(){
         log.info("testJacob");
-        //System.loadLibrary("/");
+        //System.loadLibrary("/");https://www.javaquery.com/2013/12/how-to-find-clsid-or-program-id-of.html
+        //ActiveXComponent xl = new ActiveXComponent("{A1574A0D-6BFA-4BD7-9020-DED88711818D}");
+        ActiveXComponent xl = new ActiveXComponent("KHOPENAPI.KHOpenAPICtrl");
         //ActiveXComponent xl = new ActiveXComponent("A1574A0D-6BFA-4BD7-9020-DED88711818D");
-        ActiveXComponent xl = new ActiveXComponent("Excel.Application");
+        //ActiveXComponent xl = new ActiveXComponent("6D8C2B4D-EF41-4750-8AD4-C299033833FB");
+        //ActiveXComponent xl = new ActiveXComponent("Excel.Application");
 
         Object xlo = xl.getObject();
         try {
